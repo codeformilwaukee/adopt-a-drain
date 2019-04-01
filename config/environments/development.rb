@@ -14,6 +14,7 @@ Rails.application.configure do
   config.action_controller.asset_host = "http://#{options[:Host]}:#{options[:Port]}"
   config.action_mailer.asset_host = config.action_controller.asset_host
 
+  print "http://#{options[:Host]}:#{options[:Port]} HELLO"
   # Do not eager load code on boot.
   config.eager_load = false
 
