@@ -32,7 +32,6 @@
   },
   "formation": {},
   "addons": [
-    "airbrake",
     "heroku-postgresql",
     "sendgrid"
   ],
