@@ -6,7 +6,7 @@ namespace :data do
   task load_things: :environment do
     require 'thing_importer'
 
-    ThingImporter.load('https://data.sfgov.org/api/views/jtgq-b7c5/rows.csv?accessType=DOWNLOAD')
+    ThingImporter.load('https://gist.githubusercontent.com/mitchellhenke/4c9bef58a59af773f707c1d27026d165/raw/542724c515011ac2044eb97ddb215920c49b6748/drains.csv')
   end
 
   # move adoptions to closeby things

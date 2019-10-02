@@ -32,13 +32,13 @@ class ThingImporter
     end
 
     def normalize_thing(csv_thing)
-      matches = csv_thing['Location'].match(LOCATION_REGEX)
-      throw "could not match location #{csv_thing['Location']}" unless matches
+      # matches = csv_thing['Location'].match(LOCATION_REGEX)
+      # throw "could not match location #{csv_thing['Location']}" unless matches
 
       {
-        city_id: csv_thing['PUC_Maximo_Asset_ID'].gsub!('N-', ''),
-        lat: matches[:lat],
-        lng: matches[:lng],
+        city_id: nil,
+        lat: csv_thing['lat'],
+        lng: csv_thing['lng'],
         type: csv_thing['Drain_Type'],
         system_use_code: csv_thing['System_Use_Code'],
         priority: csv_thing['PRIORITY_STATUS'] == '1',
