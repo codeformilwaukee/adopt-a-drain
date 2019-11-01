@@ -6,7 +6,7 @@ namespace :data do
   task load_things: :environment do
     require 'thing_importer'
 
-    ThingImporter.load('https://gist.githubusercontent.com/mitchellhenke/4c9bef58a59af773f707c1d27026d165/raw/542724c515011ac2044eb97ddb215920c49b6748/drains.csv')
+    ThingImporter.load('https://gist.githubusercontent.com/mitchellhenke/8b7b1f511f7a595c1c547c3c3ce04429/raw/087e3ba14c17b552c797d44ded8bbe3689f37efc/milwaukee_drains.csv')
   end
 
   # move adoptions to closeby things
