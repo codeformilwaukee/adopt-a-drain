@@ -1,0 +1,7 @@
+= form_for :thing, :url => things_path, :method => :put, :html => {:id => "debris_form"} do |f|
+  %fieldset.form-group
+    = f.hidden_field "id"
+    = f.number_field "debris_removed_pounds", step: 1
+
+  %fieldset.form-group
+    = f.submit t("buttons.update_debris"), :class => "btn btn-primary btn-block"

@@ -693,6 +693,45 @@ $(function() {
     });
     return false;
   });
+  $('#map').on('submit', '#debris_form', function(event) {
+    var submitButton = $("#debris_form input[type='submit']");
+    $(submitButton).attr("disabled", true);
+    $.ajax({
+      type: 'POST',
+      url: '/things.json',
+      data: {
+        '_method': 'patch',
+        'id': $('#thing_id').val(),
+        'utf8': '✓',
+        'authenticity_token': $('#debris_form input[name="authenticity_token"]').val(),
+        'thing': {
+          'debris_removed_pounds': $('#thing_debris_removed_pounds').val()
+        }
+      },
+      error: function(jqXHR) {
+        console.log(jqXHR)
+        debugger;
+        $(submitButton).attr("disabled", false);
+      },
+      success: function(data) {
+        console.log(data)
+        debugger;
+        $.ajax({
+          type: 'GET',
+          url: '/info_window',
+          data: {
+            'thing_id': activeThingId
+          },
+          success: function(data) {
+            activeInfoWindow.close();
+            activeInfoWindow.setContent(data);
+            activeInfoWindow.open(map, activeMarker);
+          }
+        });
+      }
+    });
+    return false;
+  });
   $('#map').on('submit', '#abandon_form', function() {
     var answer = window.confirm(constants.abandonConfirmText)
     if(answer) {

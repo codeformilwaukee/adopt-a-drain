@@ -14,6 +14,8 @@
         %div.hidden-xs
           %h3.text-center
             = t("titles.adopted_tagline", :count => Thing.adopted.count, :things => t("defaults.things"))
+          %h3.text-center
+            = t("titles.debris_tagline", :count => Thing.adopted.sum(:debris_removed_pounds), :pounds => t("defaults.pounds"))
             .small
               Last updated
               = local_date(Time.now, '%B %e, %Y')

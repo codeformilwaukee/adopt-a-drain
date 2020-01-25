@@ -3,6 +3,7 @@
 en:
   buttons:
     abandon: "Abandon this %{thing}"
+    update_debris: "Update pounds of debris collected"
     adopt: "Adopt!"
     back: "Back"
     change_password: "Change my password"
@@ -36,6 +37,7 @@ en:
     state: "CA"
     thing: "drain"
     things: "drains"
+    pounds: "pounds"
     this_thing: "This %{thing}"
     tagline: "What does it mean to adopt a drain?"
     tos: "By signing up, you agree to the %{tos}."
@@ -54,6 +56,7 @@ en:
     first_name: "First name"
     last_name: "Last name"
     name_thing: "Give this %{thing} a name"
+    update_debris_removed_pounds: "Update debris collected"
     my_things: "My %{things}"
     organization: "Organization"
     password: "Password"
@@ -95,6 +98,7 @@ en:
     adopt: "Adopt this %{thing}"
     adopted: "%{thing_name} has been adopted"
     adopted_tagline: "%{count} %{things} adopted in Milwaukee"
+    debris_tagline: "%{count} %{pounds} of debris removed in Milwaukee"
     byline: "by %{name}"
     edit_profile: "Edit your Profile"
     main: "Adopt-a-%{thing} Milwaukee"

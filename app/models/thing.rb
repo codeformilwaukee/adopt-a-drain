@@ -19,6 +19,7 @@ class Thing < ApplicationRecord
   validates :lat, presence: true
   validates :lng, presence: true
   validates :name, obscenity: true
+  validates :debris_removed_pounds, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   scope :adopted, -> { where.not(user_id: nil) }
 

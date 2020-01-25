@@ -35,6 +35,6 @@ private
   end
 
   def thing_params
-    params.require(:thing).permit(:adopted_name, :user_id)
+    params.require(:thing).permit(:adopted_name, :user_id, :debris_removed_pounds)
   end
 end
