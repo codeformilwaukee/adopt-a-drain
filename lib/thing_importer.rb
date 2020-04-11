@@ -12,11 +12,11 @@ LOCATION_REGEX = /POINT \((?<lng>-?\d+\.\d+) (?<lat>-?\d+\.\d+)\)/.freeze
 # https://data.sfgov.org/City-Infrastructure/Stormwater-inlets-drains-and-catch-basins/jtgq-b7c5
 class ThingImporter
   class << self
-    def load(source_url)
+    def load(file_path)
       Rails.logger.info('Downloading Things... ... ...')
 
       ActiveRecord::Base.transaction do
-        import_temp_things(source_url)
+        import_temp_things(file_path)
 
         deleted_things_with_adoptee, deleted_things_no_adoptee = delete_non_existing_things
         created_things = upsert_things
@@ -36,7 +36,8 @@ class ThingImporter
       # throw "could not match location #{csv_thing['Location']}" unless matches
 
       {
-        city_id: nil,
+        city_name: csv_thing['city_name'],
+        city_id: csv_thing['city_id'],
         lat: csv_thing['lat'],
         lng: csv_thing['lng'],
         type: csv_thing['Drain_Type'],
@@ -55,37 +56,40 @@ class ThingImporter
     #
     # rubocop:disable Metrics/AbcSize
     # rubocop:disable Metrics/MethodLength
-    def import_temp_things(source_url)
+    def import_temp_things(file_path)
       insert_statement_id = SecureRandom.uuid
 
       conn = ActiveRecord::Base.connection
       conn.execute(<<-SQL.strip_heredoc)
-        CREATE TEMPORARY TABLE "temp_thing_import" (
+        CREATE TEMPORARY TABLE IF NOT EXISTS "temp_thing_import" (
           id serial,
           name varchar,
           lat numeric(16,14),
           lng numeric(17,14),
           city_id integer,
+          city_name text,
           system_use_code varchar,
           priority boolean
         )
       SQL
-      conn.raw_connection.prepare(insert_statement_id, 'INSERT INTO temp_thing_import (name, lat, lng, city_id, system_use_code, priority) VALUES($1, $2, $3, $4, $5, $6)')
+      conn.raw_connection.prepare(insert_statement_id, 'INSERT INTO temp_thing_import (name, lat, lng, city_id, city_name, system_use_code, priority) VALUES($1, $2, $3, $4, $5, $6, $7)')
 
-      response = Net::HTTP.get_response(URI.parse(source_url))
-      raise 'unable to fetch data source' unless response.is_a? Net::HTTPSuccess
+      # response = Net::HTTP.get_response(URI.parse(source_url))
+      # raise 'unable to fetch data source' unless response.is_a? Net::HTTPSuccess
+      # content = response.body
+      content = File.read(file_path)
 
-      CSV.parse(response.body, headers: true).
+      CSV.parse(content, headers: true).
         map { |t| normalize_thing(t) }.
         select { |t| invalid_thing(t) }.
         each do |thing|
         conn.raw_connection.exec_prepared(
           insert_statement_id,
-          [thing[:type], thing[:lat], thing[:lng], thing[:city_id], thing[:system_use_code], thing[:priority]],
+          [thing[:type], thing[:lat], thing[:lng], thing[:city_id], thing[:city_name], thing[:system_use_code], thing[:priority]],
         )
       end
 
-      conn.execute('CREATE INDEX "temp_thing_import_city_id" ON temp_thing_import(city_id)')
+      conn.execute('CREATE INDEX IF NOT EXISTS "temp_thing_import_city_id_city_name" ON temp_thing_import(city_id, city_name)')
     end
     # rubocop:enable Metrics/AbcSize
     # rubocop:enable Metrics/MethodLength
@@ -108,16 +112,16 @@ class ThingImporter
       # postgresql's RETURNING returns both updated and inserted records so we
       # query for the items to be inserted first
       created_things = ActiveRecord::Base.connection.execute(<<-SQL.strip_heredoc)
-        SELECT temp_thing_import.city_id
+        SELECT temp_thing_import.city_id, temp_thing_import.city_name
         FROM things
-        RIGHT JOIN temp_thing_import ON temp_thing_import.city_id = things.city_id
+        RIGHT JOIN temp_thing_import ON temp_thing_import.city_id = things.city_id AND temp_thing_import.city_name = things.city_name
         WHERE things.id IS NULL
       SQL
 
       ActiveRecord::Base.connection.execute(<<-SQL.strip_heredoc)
-        INSERT INTO things(name, lat, lng, city_id, system_use_code, priority)
-        SELECT name, lat, lng, city_id, system_use_code, priority FROM temp_thing_import
-        ON CONFLICT(city_id) DO UPDATE SET
+        INSERT INTO things(name, lat, lng, city_id, city_name, system_use_code, priority)
+        SELECT name, lat, lng, city_id, city_name, system_use_code, priority FROM temp_thing_import
+        ON CONFLICT(city_id, city_name) DO UPDATE SET
           lat = EXCLUDED.lat,
           lng = EXCLUDED.lng,
           name = EXCLUDED.name,
