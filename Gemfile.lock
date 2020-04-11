@@ -48,15 +48,15 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
-    airbrake (9.5.0)
-      airbrake-ruby (~> 4.8)
-    airbrake-ruby (4.8.0)
+    airbrake (10.0.2)
+      airbrake-ruby (~> 4.13)
+    airbrake-ruby (4.14.0)
       rbtree3 (~> 0.5)
     arel (9.0.0)
     ast (2.4.0)
     bcrypt (3.1.13)
     builder (3.2.3)
-    byebug (11.0.1)
+    byebug (11.1.1)
     concurrent-ruby (1.1.5)
     coveralls (0.8.23)
       json (>= 1.8, < 3)
@@ -126,7 +126,7 @@ GEM
     minitest (5.13.0)
     nested_form (0.3.2)
     nio4r (2.5.2)
-    nokogiri (1.10.4)
+    nokogiri (1.10.7)
       mini_portile2 (~> 2.4.0)
     obscenity (1.0.2)
     orm_adapter (0.5.0)
@@ -135,11 +135,11 @@ GEM
       activerecord (>= 4.0, < 6.1)
     parser (2.6.4.0)
       ast (~> 2.4.0)
-    pg (1.1.4)
+    pg (1.2.2)
     public_suffix (4.0.1)
-    puma (4.2.1)
+    puma (4.3.1)
       nio4r (~> 2.0)
-    rack (2.0.7)
+    rack (2.1.2)
     rack-pjax (1.1.0)
       nokogiri (~> 1.5)
       rack (>= 1.1)
@@ -192,7 +192,7 @@ GEM
       thor (>= 0.19.0, < 2.0)
     rainbow (3.0.0)
     rake (13.0.0)
-    rbtree3 (0.5.0)
+    rbtree3 (0.6.0)
     remotipart (1.4.3)
     responders (3.0.0)
       actionpack (>= 5.0)
@@ -204,7 +204,7 @@ GEM
       rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 1.7)
-    rubocop-rails (2.3.2)
+    rubocop-rails (2.4.2)
       rack (>= 1.1)
       rubocop (>= 0.72.0)
     ruby-progressbar (1.10.1)
@@ -252,7 +252,7 @@ GEM
       activemodel
     warden (1.2.8)
       rack (>= 2.0.6)
-    webmock (3.7.6)
+    webmock (3.8.0)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
@@ -264,7 +264,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  airbrake (~> 9.5)
+  airbrake (~> 10.0)
   byebug
   coveralls
   devise (~> 4.7)
@@ -292,7 +292,7 @@ DEPENDENCIES
   webmock
 
 RUBY VERSION
-   ruby 2.6.3p62
+   ruby 2.6.6p146
 
 BUNDLED WITH
    1.17.3

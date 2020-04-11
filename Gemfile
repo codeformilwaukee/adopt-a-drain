@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
-ruby '2.6.5'
+ruby '2.6.6'
 
-gem 'airbrake', '~> 9.5'
+gem 'airbrake', '~> 10.0'
 gem 'devise', '~> 4.7'
 gem 'geokit', '~> 1.13'
 gem 'haml', '~> 5.1'
