@@ -1,6 +1,7 @@
 ---
 thing_1:
   city_id: 1
+  city_name: 'Milwaukee'
   lat: 42.383339
   lng: -71.049226
   name: ""
@@ -9,60 +10,70 @@ thing_1:
 
 thing_2:
   city_id: 2,
+  city_name: 'Milwaukee'
   lat: 42.381021
   lng: -71.075964
   priority: true
 
 thing_3:
   city_id: 3
+  city_name: 'Milwaukee'
   lat: 42.380106
   lng: -71.073419
   priority: true
 
 thing_4:
   city_id: 4
+  city_name: 'Milwaukee'
   lat: 42.377728
   lng: -71.070918
   priority: false
 
 thing_5:
   city_id: 5
+  city_name: 'Milwaukee'
   lat: 42.377281
   lng: -71.071576
   priority: false
 
 thing_6:
   city_id: 6
+  city_name: 'Milwaukee'
   lat: 42.375331
   lng: -71.065169
   priority: false
 
 thing_7:
   city_id: 7
+  city_name: 'Milwaukee'
   lat: 42.373212
   lng: -71.056064
   priority: false
 
 thing_8:
   city_id: 8
+  city_name: 'Milwaukee'
   lat: 42.374992
   lng: -71.038888
   priority: false
 
 thing_9:
   city_id: 9
+  city_name: 'Milwaukee'
   lat: 42.345635
   lng: -71.139308
   priority: false
 
 thing_10:
   city_id: 10
+  city_name: 'Milwaukee'
   lat: 42.371378
   lng: -71.038005
   priority: false
 
 thing_11:
   city_id: 11
+  city_name: 'Milwaukee'
   lat: 42.383339
   lng: -71.049226
   name: "Catch Basin Drain"
