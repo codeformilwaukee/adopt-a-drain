@@ -13,7 +13,6 @@
 ActiveRecord::Schema.define(version: 2020_05_06_180702) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "btree_gist"
   enable_extension "cube"
   enable_extension "earthdistance"
   enable_extension "plpgsql"
