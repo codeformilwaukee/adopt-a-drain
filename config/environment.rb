@@ -1,7 +1,5 @@
-# frozen_string_literal: true
-
 # Load the Rails application.
-require File.expand_path('application', __dir__)
+require_relative 'application'
 
 ActionMailer::Base.smtp_settings = {
   address: 'smtp.sendgrid.net',

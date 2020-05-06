@@ -21,12 +21,16 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw]
 gem 'byebug', groups: %i[development test]
 gem 'dotenv-rails', groups: %i[development test]
 
+# Reduces boot times through caching; required in config/boot.rb
+gem 'bootsnap', '>= 1.4.2', require: false
+
 group :assets do
-  gem 'sass-rails', '>= 4.0.3'
+  gem 'sass-rails', '~> 5.0'
   gem 'uglifier'
 end
 
 group :development do
+  gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
 end
 
