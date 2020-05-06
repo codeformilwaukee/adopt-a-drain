@@ -10,7 +10,7 @@ class Thing < ApplicationRecord
 
   VALID_DRAIN_TYPES = ['Storm Water Inlet Drain', 'Catch Basin Drain'].freeze
 
-  belongs_to :user
+  belongs_to :user, optional: true
   def_delegators :reverse_geocode, :city, :country, :country_code,
                  :full_address, :state, :street_address, :street_name,
                  :street_number, :zip
