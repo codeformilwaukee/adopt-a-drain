@@ -25,7 +25,7 @@ gem 'dotenv-rails', groups: %i[development test]
 gem 'bootsnap', '>= 1.4.2', require: false
 
 group :assets do
-  gem 'sass-rails', '~> 5.0'
+  gem 'sass-rails', '~> 6.0'
   gem 'uglifier'
 end
 
