@@ -25,13 +25,13 @@ class Thing < ApplicationRecord
 
   def self.find_closest(lat, lng, limit = 10)
     query = <<-SQL
-      SELECT *, earth_distance(ll_to_earth(lat, lng), ll_to_earth(?, ?)) as distance
+      SELECT *, geom_point <-> ST_SetSRID(ST_MakePoint(?, ?), 4326) as distance
       FROM things
       WHERE deleted_at is NULL
       ORDER BY distance
       LIMIT ?
     SQL
-    find_by_sql([query, lat.to_f, lng.to_f, limit.to_i])
+    find_by_sql([query, lng.to_f, lat.to_f, limit.to_i])
   end
 
   def display_name
