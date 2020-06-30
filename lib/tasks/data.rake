@@ -6,9 +6,9 @@ namespace :data do
   task load_things: :environment do
     require 'thing_importer'
 
-    # ThingImporter.load('./data/mke_drains.csv')
-    # ThingImporter.load('./data/west_bend_drains.csv')
-    # ThingImporter.load('./data/wfb_drains.csv')
+    ThingImporter.load('./data/mke_drains.csv')
+    ThingImporter.load('./data/west_bend_drains.csv')
+    ThingImporter.load('./data/wfb_drains.csv')
     ThingImporter.load('./data/cedarburg_drains.csv')
   end
 
