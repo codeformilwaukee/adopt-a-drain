@@ -18,7 +18,7 @@ class ThingImporter
       ActiveRecord::Base.transaction do
         import_temp_things(file_path)
 
-        deleted_things_with_adoptee, deleted_things_no_adoptee = delete_non_existing_things
+        # deleted_things_with_adoptee, deleted_things_no_adoptee = delete_non_existing_things
         created_things = upsert_things
 
         # ThingMailer.thing_update_report(deleted_things_with_adoptee, deleted_things_no_adoptee, created_things).deliver_now
@@ -101,8 +101,8 @@ class ThingImporter
       deleted_things = ActiveRecord::Base.connection.execute(<<-SQL.strip_heredoc)
         UPDATE things
         SET deleted_at = NOW()
-        WHERE things.city_id NOT IN (SELECT city_id from temp_thing_import) AND deleted_at IS NULL
-        RETURNING things.city_id, things.user_id
+        WHERE (things.city_id, things.city_name) NOT IN (SELECT city_id, city_name from temp_thing_import) AND deleted_at IS NULL
+        RETURNING things.city_id, things.city_name, things.user_id
       SQL
       deleted_things.partition { |thing| thing['user_id'].present? }
     end
