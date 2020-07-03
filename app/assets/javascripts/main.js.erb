@@ -172,8 +172,8 @@ $(function() {
         icon: constants.toSewerMarkerImage
       },
       available_bay: {
-        name: 'Drains to Ocean/Bay',
-        title: 'Sewer to ocean/bay',
+        name: 'Drains to River/Lake',
+        title: 'Sewer to river/lake',
         icon: constants.toBayOceanMarkerImage
       },
       available_priority: {
@@ -298,9 +298,9 @@ $(function() {
             }
             setTimeout(function() {
               var point = new google.maps.LatLng(thing.lat, thing.lng);
-              var type = 'to_sewer'
+              var type = 'to_bay_ocean'
               if (thing.system_use_code == 'MS4') {
-                type = 'to_bay_ocean';
+                type = 'to_sewer';
               }
               if(thing.priority) { // override bay to ocean
                 type = 'priority';

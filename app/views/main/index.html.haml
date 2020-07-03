@@ -29,7 +29,7 @@
           - elsif @reset_password_token.present?
             = render :partial => 'passwords/edit'
           - else
-            %iframe{ :width => "100%", :src => "https://www.youtube.com/embed/DHNEtCI2RKk", :height => "250px", :frameborder => "0", :allowfullscreen => "allowfullscreen" }
+            %iframe{ :width => "100%", :src => "https://www.youtube.com/watch?v=MlRuuBSr5AA", :height => "250px", :frameborder => "0", :allowfullscreen => "allowfullscreen" }
             = render :partial => "sidebar/search"
         -# Corresponds to guideline div above
         %div.hidden.visible-xs-block
@@ -45,18 +45,12 @@
               %a{:href => "https://www.mmsd.com/"}
                 = image_tag "logos/mmsd.png", :alt => t("sponsors.mmsd"), :title => t("sponsors.mmsd"), :class => "mmsd"
             .col-xs-4
-              %a{:href => "http://datasf.org/"}
-                = image_tag "logos/DataSFLogo.png", :alt => t("sponsors.datasf"), :title => t("sponsors.datasf"), :class => "datasf"
-          .row
-            .col-xs-4
               %a{:href => "https://codeformilwaukee.org/"}
                 = image_tag "logos/cfm.png", :alt => t("sponsors.built"), :title => t("sponsors.built"), :class => "cfm"
+          .row
             .col-xs-4
-              %a{:href => "http://codeforamerica.org/"}
-                = image_tag "logos/cfa.jpg", :alt => t("sponsors.cfa"), :title => t("sponsors.cfa"), :class => "cfa"
             .col-xs-4
-              %a{:href => "http://tech.sfgov.org/"}
-                = image_tag "logos/dtlogo.png", :alt => t("sponsors.dt"), :title => t("sponsors.dt"), :class => "dt"
+            .col-xs-4
     .col-md-9.map-container
       #map
         &nbsp;
