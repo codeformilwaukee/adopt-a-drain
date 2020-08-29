@@ -101,7 +101,7 @@ en:
     debris_tagline: "%{count} %{pounds} of debris removed in Milwaukee"
     byline: "by %{name}"
     edit_profile: "Edit your Profile"
-    main: "Adopt-a-%{thing} Milwaukee"
+    main: "Adopt Your %{thing}"
     ofline: "of %{organization}"
     priority_html: '<strong>%{thing_title} in Need</strong> - this %{thing} tends to get dirtier than its siblings and needs more TLC'
     sign_in: "Sign in to adopt this %{thing}"
