@@ -11,7 +11,7 @@ class MainControllerTest < ActionDispatch::IntegrationTest
     get '/'
     assert_response :success
     assert_select 'title', 'Adopt-a-Drain Milwaukee'
-    assert_select 'button#tagline', 'What does it mean to adopt a drain?'
+    assert_select 'button#tagline', 'What does it mean to adopt your drain?'
   end
 
   test 'should show search form when signed in' do
