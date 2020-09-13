@@ -11,6 +11,7 @@ namespace :data do
     ThingImporter.load('./data/west_bend_drains.csv')
     ThingImporter.load('./data/wfb_drains.csv')
     ThingImporter.load('./data/cedarburg_drains.csv')
+    ThingImporter.load('./data/mke_combined_drains.csv')
   end
 
   # move adoptions to closeby things

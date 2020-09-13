@@ -299,7 +299,7 @@ $(function() {
             setTimeout(function() {
               var point = new google.maps.LatLng(thing.lat, thing.lng);
               var type = 'to_bay_ocean'
-              if (thing.system_use_code == 'MS4') {
+              if (thing.city_name == 'Milwaukee Combined') {
                 type = 'to_sewer';
               }
               if(thing.priority) { // override bay to ocean
