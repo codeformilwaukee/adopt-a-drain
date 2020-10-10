@@ -1,6 +1,6 @@
 1. Make new folder in `data/` for shapefiles
 2. Copy shapefiles (.cpg, .dbf, .prj, .sbn, .sbx, .shp, .shx) into folder
-3. Convert shapefiles to SQL with shp2pgsql. Most have SRID 32054 (`NAD_1983_StatePlane_Wisconsin_South_FIPS_4803_Feet`), but double check the .shp file.
+3. Convert shapefiles to SQL with shp2pgsql. Most have SRID 32054 (`NAD_1983_StatePlane_Wisconsin_South_FIPS_4803_Feet`), but double check the .prj file.
 4. Load shapes into temporary database table with `psql`and newly generated SQL
 5. Select rows from temporary table into CSV with columns `city_name`, `city_id`, `lat`, `lng`. This may vary due to the structure of the files provided.
 6. Update `lib/tasks/data.rake` to import the newly created file
